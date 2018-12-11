@@ -30,4 +30,10 @@ return array(
         'password' => '',
         'database' => 'leppo',
     ),
+    'local.leppo.nl' => array(
+        'server'   => 'localhost',
+        'user'     => 'root',
+        'password' => 'root',
+        'database' => 'leppo',
+    )
 );

@@ -38,5 +38,14 @@ return array(
             'basePath' => 'C:\Users\Jasper\Documents\GitHub\Leppo\public_html',
             'baseUrl'  => 'http://leppo-jasper.local/',
         )
+    ),
+    'local.leppo.nl' => array(
+        'devMode' => true,
+        'siteUrl' => 'http://local.leppo.nl/',
+        'logDumpMethod' => 'print_r',
+        'environmentVariables' => array(
+            'basePath' => 'Macintosh HD⁩/Users⁩/sanderdechering⁩/Documents⁩/School⁩/HSR⁩/Lesjaar_2⁩/TLE_7⁩/public_html/',
+            'baseUrl'  => 'http://local.leppo.nl/',
+        )
     )
 );
