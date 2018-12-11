@@ -2,69 +2,56 @@
 
 {% block main %}
 
-	<div class="jumbotron jumbotron--hero" style="background-image: url(<?= the_field('heroimage') ?>)">
-		<div class="container mt-2 pt-5 pb-5" id="homepagina">
+	<div class="jumbotron jumbotron--hero mb-0" style="background-image: url(https://images.pexels.com/photos/1153213/pexels-photo-1153213.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)">
+		<div class="container mt-2 pt-5 pb-5">
 			<div class="row">
 				<div class="col-12 col-md-8">
-					<h1 class="text-primary"><?= the_field('title') ?></h1>
-					<h2 class="text-white h3 font-weight-light mt-4"><?= the_field('subtitle') ?></h2>
+					<h1 class="text-primary text-uppercase"><b>Korte titel</b></h1>
+					<h2 class="text-white h3 font-weight-light">Subtitel die iets meer inzicht geeft</h2>
 					<div class="mt-5">
-						<a href="#" class="btn btn-primary pl-3 pr-3 pt-2 pb-2 lees-link text-white">
-							Lees meer
-						</a>
+						<a href="#" class="btn btn-primary pl-3 pr-3 pt-2 pb-2 mr-3 lees-link text-white">Bekijk producten</a>
+						<a href="#" class="btn btn-secondary pl-3 pr-3 pt-2 pb-2 lees-link text-white">Bekijk hoe het werkt</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<div class="container-fluid mt-3 mb-4 rating--border">
+	    <div class="row">
+	        <div class="col-md-12 p-0">
+	            <p class="text-center rating--color">
+	                Gebruikers geven ons een 4.5 van de 5
+	    			<span class="text-warning mr-1">
+	    				<i class="ml-1 fa fa-star"></i>
+					    <i class="fa fa-star"></i>
+					    <i class="fa fa-star"></i>
+					    <i class="fa fa-star"></i>
+	        			<i class="fa fa-star-half-full"></i>
+	        		</span>
+					(2605)
+				</p>
+	        </div>
+	    </div>
+	</div>
+
 	<div class="container">
-		<div class="card-deck mb-3 text-center">
-			<div class="card mb-4 shadow-sm">
-				<div class="card-header">
-					<h4 class="my-0 font-weight-normal">Free</h4>
-				</div>
-				<div class="card-body">
-					<h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-					<ul class="list-unstyled mt-3 mb-4">
-						<li>10 users included</li>
-						<li>2 GB of storage</li>
-						<li>Email support</li>
-						<li>Help center access</li>
-					</ul>
-					<button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
-				</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="text-black text-center font-weight-bold">Hoe het werkt</h2>
 			</div>
-			<div class="card mb-4 shadow-sm">
-				<div class="card-header">
-					<h4 class="my-0 font-weight-normal">Pro</h4>
+		</div>
+		<div class="row mt-3">
+			{% for i in 1..3 %}
+				<div class="col-md-4">
+					<img src="https://placehold.it/400x200" class="img-fluid" alt="" />
+
+					<div class="text-center">
+						<p class="h3 font-weight-bold mt-2">Titel</p>
+						<p>Lorem ipsum doler simat lorem ipsum doler simat</p>
+					</div>
 				</div>
-				<div class="card-body">
-					<h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-					<ul class="list-unstyled mt-3 mb-4">
-						<li>20 users included</li>
-						<li>10 GB of storage</li>
-						<li>Priority email support</li>
-						<li>Help center access</li>
-					</ul>
-					<button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-				</div>
-			</div>
-			<div class="card mb-4 shadow-sm">
-				<div class="card-header">
-					<h4 class="my-0 font-weight-normal">Enterprise</h4>
-				</div>
-				<div class="card-body">
-					<h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-					<ul class="list-unstyled mt-3 mb-4">
-						<li>30 users included</li>
-						<li>15 GB of storage</li>
-						<li>Phone and email support</li>
-						<li>Help center access</li>
-					</ul>
-					<button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 
