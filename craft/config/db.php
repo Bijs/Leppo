@@ -17,10 +17,17 @@ return array(
 
 	/* LOCAL
 	---------------------------------------------------------- */
-	'.local' => array(
-		'server'   => 'localhost',
-		'user'     => 'root',
-		'password' => 'root',
-		'database' => 'leppo',
-	),
+    '.local' => array(
+        'server'   => 'localhost',
+        'user'     => 'root',
+        'password' => 'root',
+        'database' => 'leppo',
+    ),
+
+    'leppo-jasper.local' => array(
+        'server'   => 'localhost',
+        'user'     => 'root',
+        'password' => '',
+        'database' => 'leppo',
+    ),
 );
