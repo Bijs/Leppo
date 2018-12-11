@@ -1,0 +1,14 @@
+{
+	"name": "/recaptcha",
+	"description": "Recaptcha validatie door gebruik te maken van de onBeforeSend van de contact form plugin",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Pixeldeluxe",
+			"homepage": "http://pixeldeluxe.nl"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

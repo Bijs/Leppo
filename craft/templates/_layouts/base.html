@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+		<link rel="shortcut icon" href="{{ siteUrl }}public/images/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="{{ siteUrl }}public/images/favicon.ico" type="image/x-icon" />
+
+		{% hook 'seomaticRender' %}
+
+		<link href="{{ siteUrl }}public/css/main.min.css" rel="stylesheet" />
+	{% endblock %}
+
+</head>
+
+<body>
+	{% block body %}{% endblock %}
+	{% block foot %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% if content.shape == 'auto' %}
+	{% set imageTransform = { 
+		mode:   'fit',
+		width:  1600,
+		quality: 75,
+		format: 'jpg',
+	} %}
+{% elseif content.shape == 'square' %}
+	{% set imageTransform = { 
+		mode:   'crop',
+		width:  1600,
+		height: 1600,
+		quality: 75,
+		format: 'jpg',
+	} %}
+{% elseif content.shape == 'portrait' %}
+	{% set imageTransform = { 
+		mode:   'crop',
+		width:  1200,
+		height: 1600,
+		quality: 75,
+		format: 'jpg',
+	} %}
+{% elseif content.shape == 'landscape' %}
+	{% set imageTransform = { 
+		mode:   'crop',
+		width:  1600,
+		height: 1200,
+		quality: 75,
+		format: 'jpg',
+	} %}
+{% endif %}
+
+{% set image = content.image.first %}
+
+{% if image|length %}
+	<div class="col-sm-12 {{ content.imgSize != 'medium' ? 'col-lg-6 col-lg-offset-3' : '' }}">
+		<div class="mb-20 text-body">
+			<img src="{{ image.getUrl(imageTransform) }}" alt="{{ image.title }}" class="img-responsive border-radius"/>
+		</div>
+	</div>
+{% endif %}

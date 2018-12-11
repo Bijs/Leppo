@@ -1,0 +1,14 @@
+{
+	"name": "branksz/custommail",
+	"description": "custom mail",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Branksz",
+			"homepage": "https://instagram.com/branksz"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

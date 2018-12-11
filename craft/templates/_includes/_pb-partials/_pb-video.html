@@ -1,0 +1,8 @@
+<div class="col-md-12 wow fadeInUp">
+	{% if content.subTitle %}<h3 class="text text-font-primary font-20 mb-10">{{ content.subTitle }}</h3>{% endif %}
+	{% if craft.videoEmbed.getEmbedUrl(content.videoCode) %}	
+		<div class="border-radius embed-responsive embed-responsive-16by9">
+			<iframe src="{{ craft.videoEmbed.getEmbedUrl(content.videoCode) }}" allowfullscreen></iframe>
+		</div>
+	{% endif %}
+</div>

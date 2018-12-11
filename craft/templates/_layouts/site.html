@@ -1,0 +1,25 @@
+{% extends "_layouts/base" %}
+
+{% set baseUrl = craft.config.environmentVariables.baseUrl %}
+{% set systemEmail = craft.systemSettings.email.emailAddress %}
+{% set settings = craft.config %}
+
+{% block body %}
+
+	<div id="preloader">
+	    <div class="spinner spinner-round"></div>
+	</div>
+
+	{% include '_includes/header' %}
+
+	<main role="main">
+		{% block main %}{% endblock %}
+	</main>
+
+	{% include '_includes/footer' %}
+
+{% endblock %}
+
+{% block foot %}
+	<script src="{{ siteUrl }}public/js/main.min.js"></script>
+{% endblock %}

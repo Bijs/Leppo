@@ -1,0 +1,29 @@
+{
+	"name": "site",
+	"description": "Craft 2.6 met Bootstrap 4.0.0b",
+	"main": "",
+	"authors": [
+		"Branko Gurbaj <brankog98@icloud.com>",
+	],
+	"license": "MIT",
+	"homepage": "site.local",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"bootstrap": "^4.0.0",
+		"popper.js": "^1.12.3",
+		"imagesloaded": "~4.1.1",
+		"jquery": "^3.2.1",
+		"slick-carousel": "^1.6.0",
+		"matchHeight": "^0.7.2",
+		"font-awesome": "^4.7.0",
+		"wowjs": "^1.1.2"
+	},
+	"devDependencies": {}
+}

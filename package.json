@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-include": "^2.3.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-newer": "^1.4.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0",
+    "lazypipe": "^1.0.1",
+    "node-sass": "^4.7.2",
+    "webpack": "^3.11.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^4.7.0",
+    "imagesloaded": "~4.1.1",
+    "jquery": "^3.3.1",
+    "jquery-match-height": "^0.7.2",
+    "lodash": "^4.17.4",
+    "matchheight": "^0.1.0",
+    "popper.js": "^1.12.9",
+    "slick-carousel": "^1.8.1",
+    "wowjs": "^1.1.2"
+  }
+}
