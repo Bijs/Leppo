@@ -18,28 +18,9 @@ return array(
 	/* LOCAL
 	---------------------------------------------------------- */
     '.local' => array(
-        'server'   => 'localhost',
-        'user'     => 'root',
-        'password' => 'root',
-        'database' => 'leppo',
-    ),
-
-    'leppo-jasper.local' => array(
-        'server'   => 'localhost',
-        'user'     => 'root',
-        'password' => '',
-        'database' => 'leppo',
-    ),
-    'local.leppo.nl' => array(
-        'server'   => 'localhost',
-        'user'     => 'root',
-        'password' => 'root',
-        'database' => 'leppo',
-    ),
-    'leppo-irene.local' => array(
-        'server'   => 'localhost',
-        'user'     => 'root',
-        'password' => '',
+        'server'   => '45.32.236.97',
+        'user'     => 'leppo',
+        'password' => 'tbjUBSm5O0Cm2g7h',
         'database' => 'leppo',
     ),
 );
