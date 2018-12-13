@@ -35,5 +35,11 @@ return array(
         'user'     => 'root',
         'password' => 'root',
         'database' => 'leppo',
-    )
+    ),
+    'leppo-irene.local' => array(
+        'server'   => 'localhost',
+        'user'     => 'root',
+        'password' => '',
+        'database' => 'leppo',
+    ),
 );
