@@ -47,5 +47,14 @@ return array(
             'basePath' => 'Macintosh HD⁩/Users⁩/sanderdechering⁩/Documents⁩/School⁩/HSR⁩/Lesjaar_2⁩/TLE_7⁩/public_html/',
             'baseUrl'  => 'http://local.leppo.nl/',
         )
-    )
+    ),
+    'leppo-irene.local' => array(
+        'devMode' => true,
+        'siteUrl' => 'http://leppo-irene.local/',
+        'logDumpMethod' => 'print_r',
+        'environmentVariables' => array(
+            'basePath' => "C:/xampp/htdocs/Leppo/public_html/",
+            'baseUrl'  => 'http://leppo-irene.local/',
+        )
+    ),
 );
