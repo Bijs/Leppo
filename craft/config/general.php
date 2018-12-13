@@ -53,7 +53,7 @@ return array(
         'siteUrl' => 'http://leppo-irene.local/',
         'logDumpMethod' => 'print_r',
         'environmentVariables' => array(
-            'basePath' => 'C:\xampp\htdocs\Leppo\public_html',
+            'basePath' => "C:/xampp/htdocs/Leppo/public_html/",
             'baseUrl'  => 'http://leppo-irene.local/',
         )
     ),
