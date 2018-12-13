@@ -9282,6 +9282,12 @@ a.text-dark:focus, a.text-dark:hover {
   overflow: visible;
   clip: auto; }
 
+.jumbotron {
+  border-radius: 0; }
+
+.jumbotron--dark {
+  background: #282E34; }
+
 .jumbotron--hero {
   background-position: center center;
   -webkit-box-shadow: 0 5000px rgba(0, 0, 0, 0.6) inset;
