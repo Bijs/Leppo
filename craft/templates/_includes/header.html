@@ -1,18 +1,19 @@
 {% include '_includes/cp-edit-link' %}
 
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
-	<a class="navbar-brand" href="#">
-		<img src="{{ siteUrl }}public/images/" width="30" height="30" alt="">
-	</a>
-	<h5 class="my-0 mr-md-auto font-weight-normal">Leppo</h5>
-	<nav class="my-2 my-md-0 mr-md-3">
+	<h5 class="my-0 mr-md-auto font-weight-normal"><img src="{{ siteUrl }}public/images/leppo.png" width="200" alt="Leppo"></h5>
+	<nav class="my-2 my-md-0 mr-md-3 justify-content-end">
 		<a class="p-2 text-dark" href="#">Producten</a>
 		<a class="p-2 text-dark" href="#">Hoe werkt het</a>
-		<a class="p-2 text-dark" href="#">Support</a>
+		<a class="p-2 text-dark" href="#">FAQ</a>
 		{% if currentUser %}
-			// alleen ingelogd
+			<a class="p-2 text-dark" href="#"></a>
+		{% else %}
+			
+			<a class="p-2 text-dark" href="#">Registreer</a>
 		{% endif %}
-		<a class="p-2 text-dark" href="#">Inloggen</a>
+		<a class="p-2 text-dark" href="{{ siteUrl }}inloggen">Inloggen</a>
+		
 	</nav>
-	<a class="btn btn-outline-primary" href="#">Sign up</a>
+	
 </div>
