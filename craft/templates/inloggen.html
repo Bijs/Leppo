@@ -3,102 +3,101 @@
 {% block main %}
 
 <div class="container">
-    <div class="row my-5">
-        <div class="col-md-6 mt-5 my-5">
-            <div class="loginform">
-                <form method="post" accept-charset="UTF-8">
-                    {{ getCsrfInput() }}
-                    <input type="hidden" name="action" value="users/login">
-                    
-                    <h3>Login</h3>
-                    <div class="form-group">
-                        <h6><label for="loginName">Email</label></h6>
-                        <input id="loginName" type="text" name="loginName" class="form-control"
-                            value="{{ craft.session.rememberedUsername }}">
-                    </div>
-                    
-                    <div class="form-group">
-                        <h6><label for="password">Password</label></h6>
-                        <input id="password" type="password" name="password" class="form-control">
-                    </div>
+    <div class="row loginform my-5">
+        <div class="col-md-6 my-5">
+            <form method="post" accept-charset="UTF-8">
+                {{ getCsrfInput() }}
+                <input type="hidden" name="action" value="users/login">
+                
+                <h3>Login</h3>
+                <div class="form-group">
+                    <h6><label for="loginName">Email</label></h6>
+                    <input id="loginName" type="text" name="loginName" class="form-control"
+                        value="{{ craft.session.rememberedUsername }}">
+                </div>
+                
+                <div class="form-group">
+                    <h6><label for="password">Password</label></h6>
+                    <input id="password" type="password" name="password" class="form-control">
+                </div>
 
-                    <label>
-                        <input type="checkbox" name="rememberMe" value="1">
-                        Remember me
-                    </label><br>
+                <label>
+                    <input type="checkbox" name="rememberMe" value="1">
+                    Remember me
+                </label><br>
 
-                    <input type="submit" value="Login" class="btn btn-primary">
+                <input type="submit" value="Login" class="btn btn-primary">
 
-                    {% if errorMessage is defined %}
-                        <p>{{ errorMessage }}</p>
-                    {% endif %}
-                </form>
+                {% if errorMessage is defined %}
+                    <p>{{ errorMessage }}</p>
+                {% endif %}
+            </form>
 
-                <p><a href="{{ url('forgotpassword') }}">Forget your password?</a></p>
-            </div>
-
-            <div class="col-md-6 py-5">
-                 <form method="post" accept-charset="UTF-8">
-                    {{ getCsrfInput() }}
-                    <input type="hidden" name="action" value="users/saveUser">
-                    <input type="hidden" name="redirect" value="">
-
-                    {% macro errorList(errors) %}
-                        {% if errors %}
-                            <ul class="errors">
-                                {% for error in errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    {% endmacro %}
-
-                    {% from _self import errorList %}
-
-                    <h3>Registreren</h3>
-                    <div class="form-group">
-                        <h6><label for="username">Voornaam</label></h6>
-                        <input id="username" type="text" name="username" class="form-control"
-                            {%- if account is defined %} value="{{ account.username }}"{% endif -%}>
-                    </div>
-
-                    {% if account is defined %}
-                        {{ errorList(account.getErrors('username')) }}
-                    {% endif %}
-
-                    <div class="form-group">
-                        <h6><label for="username">Achternaam</label></h6>
-                        <input id="username" type="text" name="username" class="form-control"
-                            {%- if account is defined %} value="{{ account.username }}"{% endif -%}>
-                    </div>
-
-                    {% if account is defined %}
-                        {{ errorList(account.getErrors('username')) }}
-                    {% endif %}
-
-                    <div class="form-group">
-                        <h6><label for="email">Email</label></h6>
-                        <input id="email" type="text" name="email" class="form-control"
-                            {%- if account is defined %} value="{{ account.email }}"{% endif %}>
-                    </div>
-
-                    {% if account is defined %}
-                        {{ errorList(account.getErrors('email')) }}
-                    {% endif %}
-
-                    <div class="form-group">
-                        <h6><label for="password">Password</label></h6>
-                        <input id="password" type="password" name="password" class="form-control">
-                    </div>
-
-                    {% if account is defined %}
-                        {{ errorList(account.getErrors('password')) }}
-                    {% endif %}
-
-                    <input type="submit" value="Registreer" class="btn btn-primary">
-                </form>
-            </div>
+            <p><a href="{{ url('forgotpassword') }}">Forget your password?</a></p>
         </div>
+
+        <div class="col-md-6 my-5">
+            <form method="post" accept-charset="UTF-8">
+                {{ getCsrfInput() }}
+                <input type="hidden" name="action" value="users/saveUser">
+                <input type="hidden" name="redirect" value="">
+
+                {% macro errorList(errors) %}
+                    {% if errors %}
+                        <ul class="errors">
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endmacro %}
+
+                {% from _self import errorList %}
+
+                <h3>Registreren</h3>
+                <div class="form-group">
+                    <h6><label for="username">Voornaam</label></h6>
+                    <input id="username" type="text" name="username" class="form-control"
+                        {%- if account is defined %} value="{{ account.username }}"{% endif -%}>
+                </div>
+
+                {% if account is defined %}
+                    {{ errorList(account.getErrors('username')) }}
+                {% endif %}
+
+                <div class="form-group">
+                    <h6><label for="username">Achternaam</label></h6>
+                    <input id="username" type="text" name="username" class="form-control"
+                        {%- if account is defined %} value="{{ account.username }}"{% endif -%}>
+                </div>
+
+                {% if account is defined %}
+                    {{ errorList(account.getErrors('username')) }}
+                {% endif %}
+
+                <div class="form-group">
+                    <h6><label for="email">Email</label></h6>
+                    <input id="email" type="text" name="email" class="form-control"
+                        {%- if account is defined %} value="{{ account.email }}"{% endif %}>
+                </div>
+
+                {% if account is defined %}
+                    {{ errorList(account.getErrors('email')) }}
+                {% endif %}
+
+                <div class="form-group">
+                    <h6><label for="password">Password</label></h6>
+                    <input id="password" type="password" name="password" class="form-control">
+                </div>
+
+                {% if account is defined %}
+                    {{ errorList(account.getErrors('password')) }}
+                {% endif %}
+
+                <input type="submit" value="Registreer" class="btn btn-primary">
+            </form>
+        </div>
+        
     </div>
 </div>
 
