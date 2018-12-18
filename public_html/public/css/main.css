@@ -9288,6 +9288,9 @@ a.text-dark:focus, a.text-dark:hover {
 .jumbotron--dark {
   background: #282E34; }
 
+.text-grey {
+  color: #656060 !important; }
+
 html {
   background: orange !important; }
 
