@@ -38,17 +38,25 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="text-black text-center font-weight-bold">Hoe het werkt</h2>
+				<h2 class="h1 text-black text-center font-weight-bold">{{ entry.worksTitle }}</h2>
 			</div>
 		</div>
 		<div class="row mt-4">
-			{% for i in 1..3 %}
+			{% set transform = {
+				width: 150,
+				height: 150,
+				mode: 'crop',
+				position: 'center-center'
+			} %}
+			{% for item in entry.howItWorks %}
 				<div class="col-md-4">
-					<img src="https://placehold.it/400x200" class="img-fluid" alt="" />
+					<div class="text-center">
+						<img src="{{ item.img.first.getUrl(transform) }}" class="img-fluid" alt="{{ item.title }}" />
+					</div>
 
 					<div class="text-center">
-						<p class="h3 font-weight-bold mt-3">Titel</p>
-						<p>Lorem ipsum doler simat lorem ipsum doler simat</p>
+						<p class="h4 font-weight-bold mt-3">{{ item.subTitle }}</p>
+						<p>{{ item.description }}</p>
 					</div>
 				</div>
 			{% endfor %}
@@ -59,17 +67,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h2 class="text-white text-center font-weight-bold">Uitgelichte producten</h2>
+					<h2 class="text-white text-center font-weight-bold">{{ entry.productsTitle }}</h2>
 				</div>
 			</div>
 			<div class="row mt-4">
-				{% for i in 1..3 %}
+				{% for product in entry.hotProducts %}
 					<div class="col-md-4">
-						<img src="https://placehold.it/400x200" class="img-fluid" alt="" />
+						<div class="text-center">
+							<img src="{{ product.img.first.getUrl(transform) }}" class="img-fluid" alt="{{ product.title }}" />
+						</div>
 
 						<div class="text-center text-white">
-							<p class="h3 font-weight-bold mt-3">Titel</p>
-							<p>Lorem ipsum doler simat lorem ipsum doler simat</p>
+							<p class="h3 font-weight-bold mt-3">{{ product.title }}</p>
+							<p>{{ product.body|striptags|slice(0, 100) }}</p>
 						</div>
 					</div>
 				{% endfor %}
@@ -77,19 +87,6 @@
 		</div>
 	</div>
 
-	<div class="jumbotron jumbotron--hero mb-0" style="background-image: url({{ entry.img.first.url }})">
-		<div class="container mt-2 pt-5 pb-5">
-			<div class="row">
-				<div class="col-12 col-md-8">
-					<h1 class="text-primary text-uppercase"><b>{{ entry.heroTitle}}</b></h1>
-					<h2 class="text-white h3 font-weight-light">{{ entry.heroSubtitle }}</h2>
-					<div class="mt-5">
-						<a href="#" class="btn btn-primary pl-3 pr-3 pt-2 pb-2 mr-3 lees-link text-white">Bekijk producten</a>
-						<a href="#" class="btn btn-secondary pl-3 pr-3 pt-2 pb-2 lees-link text-white">Bekijk hoe het werkt</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{% include '_includes/ctaBlock' %}
 
 {% endblock %}
