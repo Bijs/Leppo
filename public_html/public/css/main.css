@@ -9288,6 +9288,9 @@ a.text-dark:focus, a.text-dark:hover {
 .jumbotron--dark {
   background: #282E34; }
 
+.text-grey {
+  color: #656060 !important; }
+
 .jumbotron--hero {
   background-position: center center;
   -webkit-box-shadow: 0 5000px rgba(0, 0, 0, 0.6) inset;
