@@ -49,7 +49,7 @@
 				position: 'center-center'
 			} %}
 			{% for item in entry.howItWorks %}
-				<div class="col-md-4">
+				<div class="col-lg-4 col-md-6">
 					<div class="text-center">
 						<img src="{{ item.img.first.getUrl(transform) }}" class="img-fluid" alt="{{ item.title }}" />
 					</div>
@@ -72,17 +72,22 @@
 			</div>
 			<div class="row mt-4">
 				{% for product in entry.hotProducts %}
-					<div class="col-md-4">
+					<div class="col-lg-4 col-md-6">
 						<div class="text-center">
 							<img src="{{ product.img.first.getUrl(transform) }}" class="img-fluid" alt="{{ product.title }}" />
 						</div>
 
-						<div class="text-center text-white">
-							<p class="h3 font-weight-bold mt-3">{{ product.title }}</p>
-							<p>{{ product.body|striptags|slice(0, 100) }}</p>
+						<div class="text-center">
+							<p class="h4 text-primary font-weight-bold mt-3">
+								<a href="{{ product.url }}">{{ product.title }}</a>
+							</p>
+							<p class="text-white">{{ product.defaultPrice|currency('EUR') }}</p>
 						</div>
 					</div>
 				{% endfor %}
+			</div>
+			<div class="mt-5 text-center">
+				<a href="" class="btn btn-primary">Alles bekijken</a>
 			</div>
 		</div>
 	</div>
