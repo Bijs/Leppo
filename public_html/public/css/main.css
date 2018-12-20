@@ -9291,9 +9291,6 @@ a.text-dark:focus, a.text-dark:hover {
 .text-grey {
   color: #656060 !important; }
 
-.loginform {
-  background-color: #F1F3F4; }
-
 .jumbotron--hero {
   background-position: center center;
   -webkit-box-shadow: 0 5000px rgba(0, 0, 0, 0.6) inset;
@@ -9304,3 +9301,6 @@ a.text-dark:focus, a.text-dark:hover {
 
 .rating--color {
   color: #929292; }
+
+.vraag {
+  font-color: #73937E; }

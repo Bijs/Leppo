@@ -1,8 +1,8 @@
 {% extends '_layouts/site' %}
 
 {% block main %}
-
-<div class="container">
+<div class="container-fluid loginWrapper">
+    <div class="container">
     <div class="row loginform my-5">
         <div class="col-md-6 my-5">
             <form method="post" accept-charset="UTF-8">
@@ -56,23 +56,23 @@
 
                 <h3>Registreren</h3>
                 <div class="form-group">
-                    <h6><label for="username">Voornaam</label></h6>
-                    <input id="username" type="text" name="username" class="form-control"
-                        {%- if account is defined %} value="{{ account.username }}"{% endif -%}>
+                    <h6><label for="voornaam">Voornaam</label></h6>
+                    <input id="voornaam" type="text" name="voornaam" class="form-control"
+                        {%- if account is defined %} value="{{ account.voornaam }}"{% endif -%}>
                 </div>
 
                 {% if account is defined %}
-                    {{ errorList(account.getErrors('username')) }}
+                    {{ errorList(account.getErrors('voornaam')) }}
                 {% endif %}
 
                 <div class="form-group">
-                    <h6><label for="username">Achternaam</label></h6>
-                    <input id="username" type="text" name="username" class="form-control"
-                        {%- if account is defined %} value="{{ account.username }}"{% endif -%}>
+                    <h6><label for="achternaam">Achternaam</label></h6>
+                    <input id="achternaam" type="text" name="achternaam" class="form-control"
+                        {%- if account is defined %} value="{{ account.achternaam }}"{% endif -%}>
                 </div>
 
                 {% if account is defined %}
-                    {{ errorList(account.getErrors('username')) }}
+                    {{ errorList(account.getErrors('achternaam')) }}
                 {% endif %}
 
                 <div class="form-group">
@@ -100,5 +100,7 @@
         
     </div>
 </div>
+</div>
+
 
 {% endblock %}
