@@ -3,51 +3,35 @@
 {% block main %}
 
 <div class="container">
-  <div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <p class="vraag" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Vraag 1
-        </p>
-      </h5>
-    </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupi
+  <h3>FAQ</h3>
+
+  {% set faqQuery = craft.entries().section('faq') %}
+
+
+  {% set faq = faqQuery.all() %}
+
+  <div id="accordion">
+    {% for question in faq %}
+    
+    <div class="card">
+      <div class="card-header" id="heading_{{ question.id }}">
+        <h5 class="mb-0">
+          <p class="vraag" data-toggle="collapse" data-target="#collapse_{{ question.id }}" aria-expanded="false" aria-controls="collapse_{{ question.id }}">
+            {{ question.title }}
+          </p>
+        </h5>
+      </div>
+
+      <div id="collapse_{{ question.id }}" class="collapse" aria-labelledby="heading_{{ question.id }}" data-parent="#accordion">
+        <div class="card-body">
+          {{ question.body }}
+        </div>
       </div>
     </div>
+    {% endfor %}
+
   </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <p class="collapsed vraag" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Vraag 2
-        </p>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua 
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <p class="collapsed vraag" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Vraag 3
-        </p>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 
 
