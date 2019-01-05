@@ -23,6 +23,7 @@ footer{
 }
 main{
   background-color: #f1f1f1;
+}
 
 .cp-edit-url {
 	font-family: Helvetica Neue,HelveticaNeue,sans-serif;
@@ -41,4 +42,8 @@ main{
     white-space: nowrap;
     color: #fff;
     font-weight: 600;
+}
+
+.clear {
+    clear: both;
 }

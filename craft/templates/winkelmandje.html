@@ -48,7 +48,6 @@
 								<td class="actions">
 									<form method="POST">
 									    <input type="hidden" name="action" value="commerce/cart/removeLineItem"/>
-									    <input type="hidden" name="redirect" value="shop/cart"/>
 									    {{ getCsrfInput() }}
 									    <input type="hidden" name="lineItemId" value="{{ item.id }}"/>
 									    <button type="submit" class="btn btn-link text-danger btn-sm">
@@ -60,6 +59,10 @@
 						{% endfor %}
 					</tbody>
 				</table>
+				<div class="my-3">
+					<a href="" class="btn btn-primary float-right">Afrekenen</a>
+					<div class="clear"></div>
+				</div>
 			</div>
 		</div>
 	</div>

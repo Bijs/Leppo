@@ -9299,6 +9299,7 @@ footer {
 
 main {
   background-color: #f1f1f1; }
+
 .cp-edit-url {
   font-family: Helvetica Neue,HelveticaNeue,sans-serif;
   font-size: 13px;
@@ -9317,6 +9318,9 @@ main {
   white-space: nowrap;
   color: #fff;
   font-weight: 600; }
+
+.clear {
+  clear: both; }
 
 .jumbotron--hero {
   background-position: center center;
@@ -9341,3 +9345,14 @@ ul {
 li {
   margin-top: 10px;
   margin-bottom: 10px; }
+
+header .logo {
+  display: block; }
+  header .logo:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -100vw;
+    background: #73937e; }
