@@ -35,7 +35,7 @@ return array(
         'siteUrl' => 'http://leppo-jasper.local/',
         'logDumpMethod' => 'print_r',
         'environmentVariables' => array(
-            'basePath' => 'C:\Users\Jasper\Documents\GitHub\Leppo\public_html',
+            'basePath' => 'C:\Users\Jasper\Documents\GitHub\Leppo\public_html\\',
             'baseUrl'  => 'http://leppo-jasper.local/',
         )
     ),
