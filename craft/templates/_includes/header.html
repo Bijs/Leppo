@@ -7,9 +7,9 @@
 		</a>
 	</h5>
 	<nav class="my-2 my-md-0 mr-md-3 justify-content-end">
-		<a class="p-2 text-grey" href="#">Producten</a>
-		<a class="p-2 text-grey" href="{{ siteUrl }}over">Over</a>
-		<a class="p-2 text-grey" href="{{ siteUrl }}hoe-werkt-het">Hoe werkt het</a>
+		<a class="p-2 text-grey" href="{{ siteUrl }}producten-overzicht">Producten</a>
+		<a class="p-2 text-grey" href="{{ siteUrl }}over-ons">Over</a>
+		<a class="p-2 text-grey" href="{{ siteUrl }}over-ons/hoe-werkt-het">Hoe werkt het</a>
 		<a class="p-2 pr-3 text-grey" href="{{ siteUrl }}faq">FAQ</a>
 		{% if currentUser %}
 			<a class="dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -17,10 +17,10 @@
 			</a>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 				{% if currentUser %}
-					<a class="dropdown-item" href="{{ siteUrl }}">mijn overzicht</a>
-					<a class="dropdown-item" href="{{ url('account') }}">mijn profiel</a>
+					<a class="dropdown-item" href="{{ siteUrl }}">Mijn overzicht</a>
+					<a class="dropdown-item" href="{{ url('account') }}">Mijn profiel</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="{{ logoutUrl }}">uitloggen</a>
+					<a class="dropdown-item" href="{{ logoutUrl }}">Uitloggen</a>
 				{% endif %}
 			</div>
 		{% else %}
