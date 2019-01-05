@@ -1,7 +1,17 @@
-ul{
-  list-style-type: none;
-}
-li{
-  margin-top: 10px;
-  margin-bottom: 10px;
+.my-account{
+  a{
+    color: black !important;
+  }
+  a:hover{
+    color: $primary !important;
+    text-decoration: none;
+  }
+  ul{
+    list-style-type: none;
+  }
+  li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
 }
