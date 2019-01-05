@@ -9294,6 +9294,12 @@ a.text-dark:focus, a.text-dark:hover {
 body {
   font-family: 'Quicksand', sans-serif !important; }
 
+footer {
+  background-color: white; }
+
+main {
+  background-color: #f1f1f1; }
+
 .jumbotron--hero {
   background-position: center center;
   -webkit-box-shadow: 0 5000px rgba(0, 0, 0, 0.6) inset;
@@ -9310,3 +9316,10 @@ body {
 
 .privacy-body {
   font-size: 18px; }
+
+ul {
+  list-style-type: none; }
+
+li {
+  margin-top: 10px;
+  margin-bottom: 10px; }

@@ -1,0 +1,1 @@
+{"version":3,"sources":["my-account.min.css"],"names":[],"mappings":"AAAA,GACE,oBAAsB,CAAE,AAE1B,GACE,gBAAiB,AACjB,kBAAoB,CAAE","file":"my-account.min.css","sourcesContent":["ul {\n  list-style-type: none; }\n\nli {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n"]}
