@@ -44,7 +44,7 @@ return array(
         'siteUrl' => 'http://local.leppo.nl/',
         'logDumpMethod' => 'print_r',
         'environmentVariables' => array(
-            'basePath' => 'Macintosh HD⁩/Users⁩/sanderdechering⁩/Documents⁩/School⁩/HSR⁩/Lesjaar_2⁩/TLE_7⁩/public_html/',
+            'basePath' => '/Users/sanderdechering/Documents/School/HSR/Lesjaar_2/TLE_7/public_html/',
             'baseUrl'  => 'http://local.leppo.nl/',
         )
     ),
