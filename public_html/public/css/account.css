@@ -1,0 +1,21 @@
+.account a {
+  color: black !important; }
+
+.account a:hover {
+  color: #53BBB3 !important;
+  text-decoration: none; }
+
+.account .active {
+  color: #53BBB3 !important; }
+
+.account ul {
+  list-style-type: none;
+  padding: 0 !important; }
+
+.account li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 6px 5px 6px 5px; }
+
+.account .border-green {
+  border-color: #53BBB3 !important; }
