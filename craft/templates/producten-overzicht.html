@@ -1,0 +1,45 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+
+{% requireLogin %}
+
+	<div class="container mt-5">
+		<div class="row">
+			{% set products = craft.commerce.products.find() %}
+
+			{% for product in products %}
+				<div class="col-md-4">
+					<figure class="card card-product">
+
+						{% if product.imgs | length %}
+							<div class="img-wrap">
+								<img src="{{ product.imgs.first.getUrl }}" class="img-fluid">
+							</div>
+						{% else %}
+							<div class="img-wrap">
+								<img src="http://placehold.it/400x275" class="img-fluid">
+							</div>
+						{% endif %}
+
+						<figcaption class="info-wrap p-2">
+								<h4 class="title">{{ product.title}}</h4>
+								<p class="desc">{{ product.body | slice(3, 100) | raw}}
+									{% if product.body | length > 100 %}
+										...
+									{% endif %}
+								</p>
+						</figcaption>
+						<div class="bottom-wrap p-2">
+							<a href="{{ product.url }}" class="btn btn-sm btn-primary float-right">Details</a>	
+							<div class="price-wrap h5">
+								<span class="price-new">{{ product.defaultPrice | currency('EUR') }}</span><del class="price-old"></del>
+							</div> <!-- price-wrap.// -->
+						</div> <!-- bottom-wrap.// -->
+					</figure>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

@@ -9294,6 +9294,11 @@ a.text-dark:focus, a.text-dark:hover {
 body {
   font-family: 'Quicksand', sans-serif !important; }
 
+footer {
+  background-color: white; }
+
+main {
+  background-color: #f1f1f1; }
 .cp-edit-url {
   font-family: Helvetica Neue,HelveticaNeue,sans-serif;
   font-size: 13px;
@@ -9329,3 +9334,10 @@ body {
 
 .privacy-body {
   font-size: 18px; }
+
+ul {
+  list-style-type: none; }
+
+li {
+  margin-top: 10px;
+  margin-bottom: 10px; }
