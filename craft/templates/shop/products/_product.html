@@ -4,26 +4,90 @@
 
         <div class="container mt-5">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6 mb-3">
                     <img src="{{ product.img.first.getUrl() }}" alt="{{ product.title }} afbeelding" class="img-fluid" />
                 </div>
-                <div class="col-md-6">
-                    <h1>{{ product.title }}</h1>
+                <div class="col-lg-6">
+                    <h1 class="font-weight-bold text-black">{{ product.title }}</h1>
 
-                    <form method="POST">
+                    <p class="h5 mt-1 text-grey">
+                        EUR {{ product.defaultPrice|currency('EUR')|escape|split(',')[0] ~ ',-' }}
+                    </p>
+
+                    <ul class="list-unstyled text-grey mt-4">
+                        <li><i class="fa fa-check text-success"></i> Direct op te halen</li>
+                        <li><i class="fa fa-check text-success"></i> Gecontroleerd op kwaliteit</li>
+                        <li><i class="fa fa-check text-success"></i> 100% duurzaam</li>
+                        <li><i class="fa fa-check text-success"></i> Nergens goedkoper</li>
+                    </ul>
+
+                    <form method="POST" class="mt-5">
                         <input type="hidden" name="action" value="commerce/cart/updateCart" />
-                        <input type="hidden" name="redirect" value="shop/cart" />
+                        <input type="hidden" name="redirect" value="winkelmandje" />
                         <input type="hidden" name="qty" value="1" />
                         <input type="hidden" name="purchasableId" value="{{ product.variants[0].purchasableId }}" />
                         {{ getCsrfInput() }}
 
-                        <button type="submit" class="btn btn-success w-100 text-center">
+                        <button type="submit" id="atcButton" class="btn btn-success w-100 text-center">
                             <i class="fa fa-cart-plus"></i> 
                             Toevoegen aan winkelmandje
                         </button>
                     </form>
                 </div>
             </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tabfoto">Foto's</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabomsch">Omschrijving</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabretour">Retourzendingen</a></li>
+                    </ul>
+
+                    <div class="tab-content mt-4">
+                        <div id="tabfoto" class="tab-pane fade in active show">
+                            <div class="row">
+                                {% for item in product.imgs %}
+                                    <div class="col-lg-6 col-md-12">
+                                        <img src="{{ item.getUrl() }}" alt="Afbeelding {{ loop.index }}" class="img-fluid py-3" />
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div id="tabomsch" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    {{ product.body }}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabretour" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    Pulvinar consectetur felis sociosqu sociis egestas proin parturient sapien vivamus, fusce tempus elementum cum fringilla ac vehicula arcu, torquent donec platea dictum aenean sagittis fermentum aliquet. Accumsan porta est a hendrerit facilisi ad vulputate laoreet, curae nunc leo condimentum fusce non rhoncus justo at, sit fermentum tempus lectus elit suspendisse enim. Justo at pellentesque vestibulum per habitant consectetur, arcu posuere nascetur cubilia aliquam sed, nullam aptent sem eleifend porttitor. Facilisis porta platea ad nec fusce convallis sociosqu, netus malesuada ante neque accumsan condimentum porttitor, scelerisque sodales volutpat mattis nascetur a. Tempus metus sapien massa praesent vehicula inceptos dui aliquet diam, faucibus nunc parturient dictumst malesuada integer lacinia porta rhoncus justo, posuere laoreet volutpat interdum orci urna nulla turpis. Fusce habitant eleifend quis tincidunt penatibus praesent tempus at cursus mattis euismod, per dictum sapien fames parturient ridiculus neque lectus habitasse odio venenatis aptent, phasellus integer convallis viverra ultricies nascetur taciti lacus enim rhoncus. Vitae sodales nunc placerat convallis laoreet elit blandit, interdum massa augue sem dignissim tellus sociis parturient, lobortis euismod sapien nisi purus erat.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <button id="pressBtn" class="btn btn-success w-100 text-center">
+                        <i class="fa fa-cart-plus"></i> 
+                        Toevoegen aan winkelmandje
+                    </button>
+                </div>
+            </div>
         </div>
 
+{% endblock %}
+
+{% block foot %}
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function(){
+            $("#pressBtn").click(function(){
+                $("#atcButton").click();
+            });
+        });
+    </script>
 {% endblock %}

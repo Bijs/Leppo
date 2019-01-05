@@ -9299,6 +9299,24 @@ footer {
 
 main {
   background-color: #f1f1f1; }
+.cp-edit-url {
+  font-family: Helvetica Neue,HelveticaNeue,sans-serif;
+  font-size: 13px;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  position: fixed;
+  bottom: 20px;
+  background: #73937E;
+  right: 30px;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 6px 12px;
+  border: none;
+  z-index: 16;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  font-weight: 600; }
 
 .jumbotron--hero {
   background-position: center center;
