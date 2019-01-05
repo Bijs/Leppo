@@ -36,7 +36,7 @@
 {% if image|length %}
 	<div class="col-sm-12 {{ content.imgSize != 'medium' ? 'col-lg-6 col-lg-offset-3' : '' }}">
 		<div class="mb-20 text-body">
-			<img src="{{ image.getUrl(imageTransform) }}" alt="{{ image.title }}" class="img-responsive border-radius"/>
+			<img src="{{ image.getUrl(imageTransform) }}" alt="{{ image.title }}" class="img-fluid border-radius"/>
 		</div>
 	</div>
 {% endif %}
