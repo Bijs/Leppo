@@ -1,0 +1,39 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+
+<div class="container">
+
+  <h3>FAQ</h3>
+
+  {% set faqQuery = craft.entries().section('faq') %}
+
+
+  {% set faq = faqQuery.all() %}
+
+  <div id="accordion">
+    {% for question in faq %}
+    
+    <div class="card">
+      <div class="card-header" id="heading_{{ question.id }}">
+        <h5 class="mb-0">
+          <p class="vraag" data-toggle="collapse" data-target="#collapse_{{ question.id }}" aria-expanded="false" aria-controls="collapse_{{ question.id }}">
+            {{ question.title }}
+          </p>
+        </h5>
+      </div>
+
+      <div id="collapse_{{ question.id }}" class="collapse" aria-labelledby="heading_{{ question.id }}" data-parent="#accordion">
+        <div class="card-body">
+          {{ question.body }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+
+{% endblock %}
