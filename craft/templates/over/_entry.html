@@ -3,14 +3,16 @@
 {% block main %}
 
 	<div class="container pt-5 pb-5">
-		<div class="row">
-			<div class="col-md-10 offset-md-1 pt-5 pb-5">
-				<h1 class="mb-5 text-center">{{ entry.title }}</h1>
+		<div class="card">
+			<div class="row">
+				<div class="col-md-10 offset-md-1 pt-5 pb-5">
+					<h1 class="mb-5 text-center">{{ entry.title }}</h1>
 
-				<div class="row">
-					{% for content in entry.pageBuilder %}
-						{% include ('_includes/_pb-partials/_pb-' ~ content.type.handle) %}
-					{% endfor %}
+					<div class="row">
+						{% for content in entry.pageBuilder %}
+							{% include ('_includes/_pb-partials/_pb-' ~ content.type.handle) %}
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 		</div>
