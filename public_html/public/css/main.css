@@ -9300,6 +9300,13 @@ footer {
 main {
   background-color: #f1f1f1; }
 
+.card {
+  background: #FFFFFF;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 13px 0px rgba(210, 210, 210, 0.5);
+          box-shadow: 0 1px 13px 0px rgba(210, 210, 210, 0.5);
+  max-width: 650px; }
+
 .cp-edit-url {
   font-family: Helvetica Neue,HelveticaNeue,sans-serif;
   font-size: 13px;
@@ -9318,6 +9325,9 @@ main {
   white-space: nowrap;
   color: #fff;
   font-weight: 600; }
+
+.clear {
+  clear: both; }
 
 .jumbotron--hero {
   background-position: center center;
@@ -9349,14 +9359,3 @@ main {
 .my-account li {
   margin-top: 10px;
   margin-bottom: 10px; }
-
-header .logo {
-  display: block; }
-  header .logo:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: -100vw;
-    background: #73937e; }
