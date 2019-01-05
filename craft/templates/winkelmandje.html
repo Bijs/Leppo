@@ -5,7 +5,61 @@
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-md-12">
-				
+				<div class="page-header">
+					<h1>Winkelmandje <small class="text-grey h4">({{ cart.lineItems|length }})</small></h1>
+				</div>
+			</div>
+			<div class="col-md-12">
+				{% set transform = {
+					width: 150,
+					height: 150,
+					mode: 'crop',
+					quality: 70
+				} %}
+
+				<table id="cart" class="table table-hover table-condensed">
+    				<thead>
+						<tr>
+							<th>Product</th>
+							<th>Prijs</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in cart.lineItems %}
+							<tr>
+								<td>
+									<div class="row">
+										<div class="col-sm-2 hidden-xs">
+											{% set product = craft.commerce.products.id(item.purchasable.productId).first %}
+											{% if product.imgs|length %}
+												<img src="{{ product.imgs.first.getUrl(transform) }}" alt="Afbeelding {{ loop.index }}" class="img-fluid" />
+											{% else %}
+												<img src="https://placehold.it/150x150" alt="Afbeelding {{ loop.index }}" class="img-fluid" />
+											{% endif %}
+										</div>
+										<div class="col-sm-10">
+											<h4>{{ product.title }}</h4>
+											<p class="h6 text-grey">{{ product.body|slice(0, 150)|raw }}</p>
+										</div>
+									</div>
+								</td>
+								<td>{{ item.price|currency('EUR') }}</td>
+								<td class="actions">
+									<form method="POST">
+									    <input type="hidden" name="action" value="commerce/cart/removeLineItem"/>
+									    <input type="hidden" name="redirect" value="shop/cart"/>
+									    {{ getCsrfInput() }}
+									    <input type="hidden" name="lineItemId" value="{{ item.id }}"/>
+									    <button type="submit" class="btn btn-link text-danger btn-sm">
+									    	<i class="fa fa-times"></i>
+									    </button>
+									</form>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
