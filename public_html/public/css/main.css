@@ -9346,9 +9346,16 @@ main {
 .privacy-body {
   font-size: 18px; }
 
-ul {
+.my-account a {
+  color: black !important; }
+
+.my-account a:hover {
+  color: #73937E !important;
+  text-decoration: none; }
+
+.my-account ul {
   list-style-type: none; }
 
-li {
+.my-account li {
   margin-top: 10px;
   margin-bottom: 10px; }

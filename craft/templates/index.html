@@ -17,7 +17,7 @@
 		</div>
 	</div>
 
-	<div class="container-fluid mt-3 mb-5 rating--border">
+	<div class="container-fluid mt-3 rating--border">
 	    <div class="row">
 	        <div class="col-md-12 p-0">
 	            <p class="text-center rating--color">
@@ -35,35 +35,37 @@
 	    </div>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2 class="h1 text-black text-center font-weight-bold">{{ entry.worksTitle }}</h2>
-			</div>
-		</div>
-		<div class="row mt-4">
-			{% set transform = {
-				width: 150,
-				height: 150,
-				mode: 'crop',
-				position: 'center-center'
-			} %}
-			{% for item in entry.howItWorks %}
-				<div class="col-lg-4 col-md-6">
-					<div class="text-center">
-						<img src="{{ item.img.first.getUrl() }}" alt="{{ item.title }}" width="150" height="150" />
-					</div>
-
-					<div class="text-center">
-						<p class="h4 font-weight-bold mt-4">{{ item.subTitle }}</p>
-						<p>{{ item.description }}</p>
-					</div>
+	<div class="pt-5 pb-5 bg-white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="h1 text-black text-center font-weight-bold">{{ entry.worksTitle }}</h2>
 				</div>
-			{% endfor %}
+			</div>
+			<div class="row mt-5">
+				{% set transform = {
+					width: 150,
+					height: 150,
+					mode: 'crop',
+					position: 'center-center'
+				} %}
+				{% for item in entry.howItWorks %}
+					<div class="col-lg-4 col-md-6">
+						<div class="text-center">
+							<img src="{{ item.img.first.getUrl() }}" alt="{{ item.title }}" width="150" height="150" />
+						</div>
+
+						<div class="text-center">
+							<p class="h4 font-weight-bold mt-4">{{ item.subTitle }}</p>
+							<p>{{ item.description }}</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 
-	<div class="jumbotron jumbotron--dark mt-5 mb-0">
+	<div class="jumbotron jumbotron--dark mb-0">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
