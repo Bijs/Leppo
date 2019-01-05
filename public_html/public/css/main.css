@@ -9291,6 +9291,9 @@ a.text-dark:focus, a.text-dark:hover {
 .text-grey {
   color: #656060 !important; }
 
+body {
+  font-family: 'Quicksand', sans-serif !important; }
+
 .jumbotron--hero {
   background-position: center center;
   -webkit-box-shadow: 0 5000px rgba(0, 0, 0, 0.6) inset;
@@ -9304,3 +9307,6 @@ a.text-dark:focus, a.text-dark:hover {
 
 .vraag {
   color: #4F5D75 !important; }
+
+.privacy-body {
+  font-size: 18px; }
