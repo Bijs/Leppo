@@ -9302,10 +9302,10 @@ main {
 
 .card {
   background: #FFFFFF;
-  border-radius: 3px;
+  border-radius: 4px;
   -webkit-box-shadow: 0 1px 13px 0px rgba(210, 210, 210, 0.5);
           box-shadow: 0 1px 13px 0px rgba(210, 210, 210, 0.5);
-  max-width: 650px; }
+  overflow: hidden; }
 
 .cp-edit-url {
   font-family: Helvetica Neue,HelveticaNeue,sans-serif;

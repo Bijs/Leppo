@@ -2,12 +2,31 @@
 
 {% block main %}
 
-	<div class="container pt-5 pb-5">
+	{% if entry.img|length %}
+	    {% set transform = { 
+	        quality: 90,
+	        format: 'jpg',
+	        width:  entry.img.first.getWidth(),
+	        height: entry.img.first.getHeight(),
+	    } %}
+	{% endif %}
+
+	<section class="page-title" style="background: url({{ entry.img|length ? entry.img.first.getUrl(transform) : 'https://placehold.it/2000x2000' }});">
+	    <div class="container">
+	    	<div class="row">
+	    		<div class="col-md-10 offset-md-1">
+	    			<div class="title py-5">
+	    				<h1 class="py-5 text-white"><strong>{{ entry.title }}</strong></h1>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	</section>
+
+	<div class="container pb-5">
 		<div class="card">
 			<div class="row">
 				<div class="col-md-10 offset-md-1 pt-5 pb-5">
-					<h1 class="mb-5 text-center">{{ entry.title }}</h1>
-
 					<div class="row">
 						{% for content in entry.pageBuilder %}
 							{% include ('_includes/_pb-partials/_pb-' ~ content.type.handle) %}
