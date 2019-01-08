@@ -10,9 +10,7 @@
                 <div class="col-lg-6">
                     <h1 class="font-weight-bold text-black">{{ product.title }}</h1>
 
-                    <p class="h5 mt-1 text-grey">
-                        EUR {{ product.defaultPrice|currency('EUR')|escape|split(',')[0] ~ ',-' }}
-                    </p>
+                    <p class="h5 mt-1 text-grey">EUR {{ product.defaultPrice|currency('EUR')|escape|split(',')[0] ~ ',-' }}</p>
 
                     <ul class="list-unstyled text-grey mt-4">
                         <li><i class="fa fa-check text-success"></i> Direct op te halen</li>
@@ -20,6 +18,11 @@
                         <li><i class="fa fa-check text-success"></i> 100% duurzaam</li>
                         <li><i class="fa fa-check text-success"></i> Nergens goedkoper</li>
                     </ul>
+
+                    <p class="p-2">
+                        Aangeboden door <span class="text-grey"><em>{{ product.userId.first.friendlyName }}</em></span>
+                        <img src="{{ product.userId.first.photoUrl }}" alt="" width="50" class="ml-2 img-fluid b-rounded" />
+                    </p>
 
                     <form method="POST" class="mt-5">
                         <input type="hidden" name="action" value="commerce/cart/updateCart" />
