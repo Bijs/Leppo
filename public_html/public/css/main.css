@@ -9329,6 +9329,9 @@ main {
 .clear {
   clear: both; }
 
+.b-rounded {
+  border-radius: 100% !important; }
+
 .jumbotron--hero {
   background-position: center center;
   -webkit-box-shadow: 0 5000px rgba(0, 0, 0, 0.6) inset;
