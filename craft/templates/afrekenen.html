@@ -1,0 +1,64 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+
+    {% set addresses = craft.commerce.customer.addresses %}
+
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Bevestigen</h1>
+                </div>
+            </div>
+            <div class="col-md-8">
+                {% set totalPrice = 0 %}
+
+                <table class="table">
+                    <tbody>
+                        {% for item in cart.lineItems %}
+                            {% set product = craft.commerce.products.id(item.purchasable.productId).first %}
+                            {% set totalPrice = totalPrice + item.price %}
+
+                            <tr>
+                                <td>{{ product.title }}</td>
+                                <td>{{ item.price|currency('EUR') }}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Totaal</strong></td>
+                            <td><strong>{{ totalPrice|currency('EUR') }}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                {% if craft.commerce.availableShippingMethods|length %}
+                    <form method="POST">
+                        <input type="hidden" name="action" value="commerce/cart/updateCart">
+                        <input type="hidden" name="redirect" value="shop/checkout/payment">
+
+                        {{ getCsrfInput() }}
+
+                        {% for handle, method in craft.commerce.availableShippingMethods %}
+                            {% if handle == 'freeShipping' %}
+                                <p class="h6 mb-4">
+                                    <i class="fa fa-check"></i> 
+                                    Product(en) ophalen op de HR-locatie
+                                </p>
+                                <input type="radio" name="shippingMethod" value="{{ handle }}" class="d-none" checked />
+                            {% endif %}
+                        {% endfor %}
+
+                        <input type="submit" class="btn btn-primary" value="Afrekenen" />
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
