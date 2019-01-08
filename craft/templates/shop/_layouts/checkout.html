@@ -3,7 +3,7 @@
 {% extends 'shop/_layouts/main' %}
 
 {% block header %}
-    <div id="header" class="container">
+    {# <div id="header" class="container">
         <div class="row">
             <div class="twelve columns">
                 <a href="{{ url('shop') }}">{%- include "shop/_images/logo" with {'class': 'logo'} -%}</a>
@@ -16,13 +16,11 @@
                 {% endif %}
             </div>
         </div>
-    </div>
+    </div> #}
 {% endblock %}
 
 
 {% block main %}
-
-    {% include 'shop/_includes/meter' %}
 
     {% block content %}
 
