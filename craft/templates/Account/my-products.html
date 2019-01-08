@@ -1,6 +1,11 @@
 {% extends '_layouts/site' %}
+
 {% requireLogin %}
+
 {% block main %}
+
+{% set products = craft.commerce.products.search("userId:" ~currentUser) %}
+
 <div class="container py-3 account">
     <div class="row py-5">
         <div class="col-3 card">
@@ -15,7 +20,32 @@
         </div>
         <div class="col-8 card ml-3">
             <h5 class="py-3 ml-2 border-bottom border-green">My products</h5>
+        
 
+        <table class="table p5">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Inleveringsdatum</th>
+              <th scope="col">Verwachte credits</th>
+              <th scope="col">Status</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for product in products %}
+              <tr>
+                  <td>{{ product.title }}</td>
+                  <td>{{ product.dateCreated}}</td>
+                  {% set credits = (product.defaultPrice*0.8 > 100 ? 100 : product.defaultPrice*0.8 | round ) %}
+                  <td>{{ credits }}</td>
+                  <td>{{ product.status }}</td>
+                </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+
+          
         </div>
     </div>
 </div>
