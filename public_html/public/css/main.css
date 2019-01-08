@@ -9367,3 +9367,6 @@ main {
 
 .account .border-green {
   border-color: #53BBB3 !important; }
+
+.hoeContainer {
+  padding-top: 75px; }
