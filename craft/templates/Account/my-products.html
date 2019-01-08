@@ -36,8 +36,8 @@
               <tr>
                   <td>{{ product.title }}</td>
                   <td>{{ product.dateCreated}}</td>
-                  {% set credits = (product.defaultPrice*0.8 > 100 ? 100 : product.defaultPrice*0.8 | round ) %}
-                  <td>{{ credits }}</td>
+                  {% set credits = product.defaultPrice %}
+                  <td>{{ craft.credits.calcCredits(credits) }}</td>
                   <td>{{ product.status }}</td>
                 </td>
               </tr>
