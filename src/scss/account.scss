@@ -1,0 +1,27 @@
+.account{
+  a{
+    color: black !important;
+  }
+  a:hover{
+    color: #53BBB3 !important;
+    text-decoration: none;
+  }
+  .active{
+    color: #53BBB3 !important;
+  }
+
+  ul{
+    list-style-type: none;
+    padding: 0 !important;
+  }
+  li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 6px 5px 6px 5px;
+  }
+  .border-green{
+    border-color: #53BBB3 !important;
+  }
+  tr{
+  }
+}
