@@ -73,7 +73,35 @@
 			</div>
 			<div class="row mt-4">
 				{% for product in entry.hotProducts %}
-					<div class="col-lg-4 col-md-6">
+					<div class="col-md-4 text-white">
+						<div class="border">
+							{% if product.imgs|length %}
+								<div class="img-wrap">
+									<img src="{{ product.imgs.first.getUrl }}" class="img-fluid" />
+								</div>
+							{% else %}
+								<div class="img-wrap">
+									<img src="http://placehold.it/400x275" class="img-fluid" />
+								</div>
+							{% endif %}
+
+							<figcaption class="info-wrap p-2">
+								<h4 class="font-weight-bold">{{ product.title}}</h4>
+								<p class="desc">{{ product.body | slice(3, 100) | raw}}
+									{% if product.body | length > 100 %}
+										...
+									{% endif %}
+								</p>
+							</figcaption>
+							<div class="bottom-wrap p-2">
+								<a href="{{ product.url }}" class="btn btn-sm btn-primary float-right">Details</a>	
+								<div class="price-wrap h5">
+									<span class="price-new text-success">{{ product.defaultPrice | currency('EUR') }}</span><del class="price-old"></del>
+								</div>
+							</div>
+						</div>
+					</div>
+					{# <div class="col-lg-4 col-md-6">
 						<div class="text-center">
 							<img src="{{ product.img.first.getUrl(transform) }}" class="img-fluid" alt="{{ product.title }}" />
 						</div>
@@ -84,7 +112,7 @@
 							</p>
 							<p class="text-white">{{ product.defaultPrice|currency('EUR') }}</p>
 						</div>
-					</div>
+					</div> #}
 				{% endfor %}
 			</div>
 			<div class="mt-5 text-center">
