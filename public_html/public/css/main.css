@@ -9335,6 +9335,9 @@ main {
 .b-blue {
   border: 4px solid #3714ed; }
 
+.text-account, a.text-account {
+  color: #53bbb3 !important; }
+
 .jumbotron--hero {
   background-position: center center;
   -webkit-box-shadow: 0 5000px rgba(0, 0, 0, 0.6) inset;
@@ -9373,6 +9376,9 @@ main {
 
 .account .border-green {
   border-color: #53BBB3 !important; }
+
+.account .text-account, .account a.text-account {
+  color: #53bbb3 !important; }
 
 .hoeContainer {
   padding-top: 75px; }

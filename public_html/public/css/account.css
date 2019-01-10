@@ -19,3 +19,6 @@
 
 .account .border-green {
   border-color: #53BBB3 !important; }
+
+.account .text-account, .account a.text-account {
+  color: #53bbb3 !important; }
