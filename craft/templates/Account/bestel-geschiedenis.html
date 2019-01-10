@@ -23,7 +23,7 @@
 	                        <tr>
 	                            <td><a href="{{ url('account/bestelling', { id: order.number }) }}" class="text-account account-link">#{{ order.id }}</a></td>
 	                            <td>{{ order.dateOrdered }}</td>
-	                            <td>{{ order.totalPrice|commerceCurrency(cart.currency) }}</td>
+	                            <td>{{ order.totalPrice|commerceCurrency('EUR') }}</td>
 	                        </tr>
 	                    {% endfor %}
                     </tbody>
