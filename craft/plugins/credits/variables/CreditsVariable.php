@@ -36,4 +36,14 @@ class CreditsVariable
     {
         return "And away we go to the Twig template...";
     }
+
+    public function calcCredits($credits){
+        $credits = $credits*0.8;
+
+        if($credits > 100){
+            $credits = 100;
+        }
+
+        return round($credits);
+    }
 }
