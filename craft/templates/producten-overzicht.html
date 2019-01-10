@@ -8,13 +8,18 @@
 		    	hasStock: true
 		    }}).find() %}
 
+		    {% set transform = {
+		    	width: 400,
+		    	height: 275,
+		    	mode: 'crop'
+		    } %}
+
 			{% for product in products %}
 				<div class="col-md-4">
 					<figure class="card card-product">
-
 						{% if product.imgs | length %}
 							<div class="img-wrap">
-								<img src="{{ product.imgs.first.getUrl }}" class="img-fluid">
+								<img src="{{ product.imgs.first.getUrl(transform) }}" class="img-fluid">
 							</div>
 						{% else %}
 							<div class="img-wrap">
@@ -23,19 +28,20 @@
 						{% endif %}
 
 						<figcaption class="info-wrap p-2">
-								<h4 class="title">{{ product.title}}</h4>
-								<p class="desc">{{ product.body | slice(3, 100) | raw}}
-									{% if product.body | length > 100 %}
-										...
-									{% endif %}
-								</p>
+							<h5 class="font-weight-bold text-black">{{ product.title}}</h5>
+							<p class="text-grey"><em>{{ product.body | slice(3, 100) | raw}}
+								{% if product.body | length > 100 %}
+									...
+								{% endif %}
+								</em>
+							</p>
 						</figcaption>
 						<div class="bottom-wrap p-2">
 							<a href="{{ product.url }}" class="btn btn-sm btn-primary float-right">Details</a>	
 							<div class="price-wrap h5">
-								<span class="price-new">{{ product.defaultPrice | currency('EUR') }}</span><del class="price-old"></del>
-							</div> <!-- price-wrap.// -->
-						</div> <!-- bottom-wrap.// -->
+								<span class="text-black">{{ product.defaultPrice | currency('EUR') }}</span><del class="price-old"></del>
+							</div>
+						</div>
 					</figure>
 				</div>
 			{% endfor %}
