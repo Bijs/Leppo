@@ -19,5 +19,5 @@
  */
 
 return array(
-
+	'gebruiker/(?P<username>[^/]+)' => '_gebruiker',
 );
