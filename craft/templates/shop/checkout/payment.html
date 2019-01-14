@@ -30,6 +30,7 @@
 						{% for id,name in craft.commerce.paymentMethods %}
 							<option value="{{ id }}" {% if id == cart.paymentMethodId %}selected{% endif %}>{{ name }}</option>
 						{% endfor %}
+						<option value="1337" {% if cart.paymentMethodId == '1337' %}selected{% endif %}>Credits</option>
 					</select>
 
 					{% set currencies = craft.commerce.paymentCurrencies %}
@@ -71,6 +72,11 @@
 							<span class="payment-success"></span>
 						</div>
 					</div>
+
+					{{ cart.paymentMethod }}
+					{% if cart.paymentMethod == 'credits' %}
+						betalen met credits ouwe
+					{% endif %}
 
 					{% if cart.paymentMethod.class == 'Stripe' %}
 						<script

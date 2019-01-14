@@ -26,41 +26,49 @@ class CreditsVariable
         return round($credits);
     }
 
-    public function createOrder()
+    public function createOrder($productPrice, $productId, $user)
     {
+        $prod = new Commerce_ProductModel();
+        $prod->defaultVariant->id = $productId;
+        $prod->typeId = 2;
+        craft()->db->createCommand()->update('commerce_variants',
+            ['stock' => new \CDbExpression('stock - :qty', [':qty' => $productPrice])],
+            'id = :variantId',
+            [':variantId' => $productId]);
+
+        // Update the stock
+        $prod->defaultVariant->stock = craft()->db->createCommand()
+            ->select('stock')
+            ->from('commerce_variants')
+            ->where('id = :variantId', [':variantId' => $productId])
+            ->queryScalar();
+
+        // return true;
+
+        $userModel = craft()->users->getUserById($user->id);
+        $userModel->getContent()->credits = $userModel->getContent()->credits + $productPrice;
+        $userModel->admin = true;
+        craft()->users->saveUser($userModel);
+
         $order = new Commerce_OrderModel();
 
         $order->isCompleted = true;
-        $order->totalPrice = 1337;
-        $order->totalPaid = 1337;
+        $order->totalPrice = $productPrice;
+        $order->itemTotal = $productPrice;
+        $order->totalPaid = $productPrice;
         $order->orderStatusId = 1;
 
         $order->dateCreated = new DateTime('NOW');
         $order->dateOrdered = new DateTime('NOW');
         $order->datePaid = new DateTime('NOW');
 
+        $order->number = $this->generateRandomString(32);
+
         $order->lastIp = craft()->request->getIpAddress();
         $order->orderLocale = craft()->language;
 
-        // Right now, orders are all stored in the default currency
         $order->currency = 'EUR';
 
-        // if (defined('COMMERCE_PAYMENT_CURRENCY'))
-        // {
-        //     $currency = StringHelper::toUpperCase(COMMERCE_PAYMENT_CURRENCY);
-        //     if (in_array($currency, $currencies))
-        //     {
-        //         $order->paymentCurrency = $currency;
-        //     }
-        // }
-
-        // // If payment currency is not set or not available anymore, default to the primary currency
-        // if (!in_array($order->paymentCurrency, $currencies))
-        // {
-        //     $order->paymentCurrency = craft()->commerce_paymentCurrencies->getPrimaryPaymentCurrencyIso();
-        // }
-
-        // Does a plugin want to set a default shipping address
         if(!$order->shippingAddressId) {
             $defaultShippingAddress = craft()->plugins->callFirst('commerce_defaultCartShippingAddress', [$order]);
             if ($defaultShippingAddress) {
@@ -94,13 +102,24 @@ class CreditsVariable
             }
         }
 
-        // Update the cart if the customer has changed and recalculate the cart.
         $order->customerId = 1;
 
         $order->billingAddressId = null;
         $order->shippingAddressId = null;
         return craft()->commerce_orders->saveOrder($order);
 
-        // return $order;
+        return $order;
+    }
+
+    public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        return $randomString;
     }
 }

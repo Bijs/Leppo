@@ -1,6 +1,8 @@
+{% set product = craft.commerce.products.id(129).first %}
 <pre>
-	{{ dump(craft.credits.createOrder()) }}
+	{{ dump(craft.credits.createOrder(1337, 129, currentUser)) }}
 </pre>
+
 {# <pre>
-	{{ dump(craft.commerce.orders.id(118).find()[0]) }}
+	{{ dump(craft.commerce.orders.id(211).find()[0].lineItems[0].order) }}
 </pre> #}
