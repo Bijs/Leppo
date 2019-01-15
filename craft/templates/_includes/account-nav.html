@@ -1,0 +1,10 @@
+<div class="col-3 card">
+    <ul class="py-3">
+        <li class="border-bottom border-green"><h5>Instellingen</h5></li>
+        <li><a {% if craft.request.getSegment(2) == "user-details" %}class="active"{% endif %} href="{{ url( 'account/user-details' ) }}">Gebruiker details</a></li>
+        <li><a {% if craft.request.getSegment(2) == "notifications" %}class="active"{% endif %} href="{{ url( 'account/notifications' ) }}">Notificaties</a></li>
+        <li><a {% if craft.request.getSegment(2) == "credits" %}class="active"{% endif %} href="{{ url( 'account/credits' ) }}">Credits</a></li>
+        <li><a {% if craft.request.getSegment(2) == "mijn-producten" %}class="active"{% endif %} href="{{ url( 'account/mijn-producten' ) }}">Mijn producten</a></li>
+        <li><a {% if craft.request.getSegment(2) == "bestel-geschiedenis" %}class="active"{% endif %} href="{{ url( 'account/bestel-geschiedenis' ) }}">Bestel geschiedenis</a></li>
+    </ul>
+</div>

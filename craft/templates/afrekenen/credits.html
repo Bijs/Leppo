@@ -1,0 +1,25 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+
+    {% set addresses = craft.commerce.customer.addresses %}
+
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Bevestigen</h1>
+                </div>
+            </div>
+            <div class="col-md-8">
+                {% if craft.credits.createOrder(1234, 129, currentUser) %}
+                    
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

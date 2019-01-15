@@ -1,12 +1,24 @@
 {% extends '_layouts/site' %}
 
+{% set user = craft.users.search('username:' ~ username).first %}
+
+{% if user|length == 0 %}
+	{% redirect '/404' %}
+{% endif %}
+
 {% block main %}
 
 	<div class="container pt-5 pb-5">
 		<div class="row">
+			<div class="col-md-12 mb-5 h5">
+				<strong>Aangeboden door <span class="text-grey"><em>{{ user.friendlyName }}</em></span>
+				{% if user.photoUrl|length %}
+					<img src="{{ user.photoUrl }}" alt="" width="75" class="ml-2 img-fluid b-blue b-rounded" />
+				{% endif %}</strong>
+			</div>
 			{% set products = craft.commerce.products({hasVariant: {
 		    	hasStock: true
-		    }}).find() %}
+		    }}).search('userId:' ~ user).find() %}
 
 		    {% set transform = {
 		    	width: 400,

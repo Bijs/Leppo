@@ -2,12 +2,6 @@
 /**
  * Credits plugin for Craft CMS
  *
- * Credits Variable
- *
- * --snip--
- * Craft allows plugins to provide their own template variables, accessible from the {{ craft }} global variable
- * (e.g. {{ craft.pluginName }}).
- *
  * https://craftcms.com/docs/plugins/variables
  * --snip--
  *
@@ -22,21 +16,6 @@ namespace Craft;
 
 class CreditsVariable
 {
-    /**
-     * Whatever you want to output to a Twig template can go into a Variable method. You can have as many variable
-     * functions as you want.  From any Twig template, call it like this:
-     *
-     *     {{ craft.credits.exampleVariable }}
-     *
-     * Or, if your variable requires input from Twig:
-     *
-     *     {{ craft.credits.exampleVariable(twigValue) }}
-     */
-    public function exampleVariable($optional = null)
-    {
-        return "And away we go to the Twig template...";
-    }
-
     public function calcCredits($credits){
         $credits = $credits*0.8;
 
@@ -45,5 +24,102 @@ class CreditsVariable
         }
 
         return round($credits);
+    }
+
+    public function createOrder($productPrice, $productId, $user)
+    {
+        $prod = new Commerce_ProductModel();
+        $prod->defaultVariant->id = $productId;
+        $prod->typeId = 2;
+        craft()->db->createCommand()->update('commerce_variants',
+            ['stock' => new \CDbExpression('stock - :qty', [':qty' => $productPrice])],
+            'id = :variantId',
+            [':variantId' => $productId]);
+
+        // Update the stock
+        $prod->defaultVariant->stock = craft()->db->createCommand()
+            ->select('stock')
+            ->from('commerce_variants')
+            ->where('id = :variantId', [':variantId' => $productId])
+            ->queryScalar();
+
+        // return true;
+
+        $userModel = craft()->users->getUserById($user->id);
+        $userModel->getContent()->credits = $userModel->getContent()->credits + $productPrice;
+        $userModel->admin = true;
+        craft()->users->saveUser($userModel);
+
+        $order = new Commerce_OrderModel();
+
+        $order->isCompleted = true;
+        $order->totalPrice = $productPrice;
+        $order->itemTotal = $productPrice;
+        $order->totalPaid = $productPrice;
+        $order->orderStatusId = 1;
+
+        $order->dateCreated = new DateTime('NOW');
+        $order->dateOrdered = new DateTime('NOW');
+        $order->datePaid = new DateTime('NOW');
+
+        $order->number = $this->generateRandomString(32);
+
+        $order->lastIp = craft()->request->getIpAddress();
+        $order->orderLocale = craft()->language;
+
+        $order->currency = 'EUR';
+
+        if(!$order->shippingAddressId) {
+            $defaultShippingAddress = craft()->plugins->callFirst('commerce_defaultCartShippingAddress', [$order]);
+            if ($defaultShippingAddress) {
+                $order->setShippingAddress($defaultShippingAddress);
+            }
+        }
+
+        if (!$order->billingAddressId) {
+            $defaultBillingAddress = craft()->plugins->callFirst('commerce_defaultCartBillingAddress', [$order]);
+            if ($defaultBillingAddress) {
+                $order->setBillingAddress($defaultBillingAddress);
+            }
+        }
+
+        if ($autoSetAddresses = craft()->config->get('autoSetNewCartAddresses', 'commerce') && $customer = craft()->commerce_customers->getCustomerById($order->customerId))
+        {
+            if (
+                !$order->shippingAddressId &&
+                ($lastShippingAddressId = $customer->lastUsedShippingAddressId) &&
+                ($address = craft()->commerce_addresses->getAddressById($lastShippingAddressId))
+            ) {
+                $order->setShippingAddress($address);
+            }
+
+            if (
+                !$order->billingAddressId &&
+                ($lastBillingAddressId = $customer->lastUsedBillingAddressId) &&
+                ($address = craft()->commerce_addresses->getAddressById($lastBillingAddressId))
+            ) {
+                $order->setBillingAddress($address);
+            }
+        }
+
+        $order->customerId = 1;
+
+        $order->billingAddressId = null;
+        $order->shippingAddressId = null;
+        return craft()->commerce_orders->saveOrder($order);
+
+        return $order;
+    }
+
+    public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        return $randomString;
     }
 }

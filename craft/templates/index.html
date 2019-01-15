@@ -72,12 +72,18 @@
 				</div>
 			</div>
 			<div class="row mt-4">
-				{% for product in entry.hotProducts %}
+				{% set transform = {
+					width: 400,
+					height: 275,
+					mode: 'crop'
+				} %}
+
+				{% for product in craft.commerce.products({hasVariant: {hasStock: true }}).find() %}
 					<div class="col-md-4 text-white">
 						<div class="border">
 							{% if product.imgs|length %}
 								<div class="img-wrap">
-									<img src="{{ product.imgs.first.getUrl }}" class="img-fluid" />
+									<img src="{{ product.imgs.first.getUrl(transform) }}" class="img-fluid" />
 								</div>
 							{% else %}
 								<div class="img-wrap">

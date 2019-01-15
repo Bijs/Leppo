@@ -54,6 +54,14 @@
                             {% endif %}
                         {% endfor %}
 
+                        {% if currentUser.credits >= totalPrice %}
+                            <p class="text-small">
+                                Je hebt {{ currentUser.credits }} credits<br>
+                                <a href="{{ siteUrl }}afrekenen/credits" class="btn btn-sm btn-secondary mr-2">Kopen met Credits</a><br><br>
+                                <small>OF</small>
+                            </p>
+                        {% endif %}
+
                         <input type="submit" class="btn btn-primary" value="Afrekenen" />
                     </form>
                 {% endif %}

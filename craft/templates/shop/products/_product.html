@@ -5,7 +5,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-6 mb-3">
-                    <img src="{{ product.img.first.getUrl() }}" alt="{{ product.title }} afbeelding" class="img-fluid" />
+                    <img src="{{ product.imgs.first.getUrl() }}" alt="{{ product.title }} afbeelding" class="img-fluid" />
                 </div>
                 <div class="col-lg-6">
                     <h1 class="font-weight-bold text-black">{{ product.title }}</h1>
@@ -20,8 +20,12 @@
                     </ul>
 
                     <p class="p-2">
-                        Aangeboden door <span class="text-grey"><em>{{ product.userId.first.friendlyName }}</em></span>
-                        <img src="{{ product.userId.first.photoUrl }}" alt="" width="75" class="ml-2 img-fluid b-blue b-rounded" />
+                        Aangeboden door <span class="text-grey">
+                            <em><a href="{{ siteUrl }}gebruiker/{{ product.userId.first.username }}">{{ product.userId.first.friendlyName }}</a></em>
+                        </span>
+                        <a href="{{ siteUrl }}gebruiker/{{ product.userId.first.username }}">
+                            <img src="{{ product.userId.first.photoUrl }}" alt="" width="75" class="ml-2 img-fluid b-blue b-rounded" />
+                        </a>
                     </p>
 
                     <form method="POST" class="mt-5">
