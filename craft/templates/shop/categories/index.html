@@ -1,0 +1,79 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+
+
+{% set transform = {
+width: 350,
+height: 250,
+mode: 'crop',
+position: 'center-center'
+} %}
+
+<style>
+    .category-link {
+        display: block;
+        padding: 15px 30px;
+        border-top: 1px solid #d4d4d4;
+        color: #4c4c4c;
+        transition: 150ms all ease-in;
+        -moz-transition: 150ms all ease-in;
+        -webkit-transition: 150ms all ease-in;
+    }
+
+    .category-link:hover {
+        text-decoration: none;
+        color: #333333;
+        padding-left: 40px;
+    }
+
+    .category-link:nth-child(even) {
+        background: #f7f7f7;
+    }
+
+    .category-link.category-more {
+        text-align: center;
+        border-bottom: 0;
+    }
+</style>
+
+<div class="container pt-5 pb-5">
+    <h2 class="text-center mb-5">Categorieën overzicht</h2>
+
+    <div class="row">
+        {% for category in craft.categories.level(1) %}
+            <div class="col-4 mb-4">
+                <div class="card pb-4">
+                    <a href="{{ category.url() }}" class="mb-4" style="display: block">
+                        {% if category.img.first %}
+                        <img src="{{ category.img.first.getUrl(transform) }}" />
+                        {% else %}
+                        <img src="/public/images/no-image-icon-4.png" />
+                        {% endif %}
+
+                        <h3 class="text-center mt-4">{{ category.title() }}</h3>
+                    </a>
+
+                    {% for subCategory in category.children.limit(3) %}
+                    <a href="{{ subCategory.url() }}" class="category-link">{{ subCategory.title }}</a>
+                    {% endfor %}
+                    <a href="" class="category-link category-more">Alle categorieën</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block foot %}
+{{ parent() }}
+
+<script>
+    $(document).ready(function(){
+        $("#pressBtn").click(function(){
+            $("#atcButton").click();
+        });
+    });
+</script>
+{% endblock %}
