@@ -9355,6 +9355,15 @@ main {
 .btnColor {
   background-color: #73937E; }
 
+.btnSec {
+  background-color: #4F5D75; }
+
+.productText {
+  color: black; }
+
+.cardBorder {
+  border: none; }
+
 .vraag {
   color: #4F5D75 !important; }
 

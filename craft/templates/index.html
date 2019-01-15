@@ -80,8 +80,8 @@
 
 				{% for product in craft.commerce.products({hasVariant: {hasStock: true }}).find() %}
 					<div class="col-md-4 text-white">
-						<div class="card card-product">
-							{% if product.imgs|length %}
+						<div class="card card-product cardBorder">
+							{% if product.imgs|length %}	
 								<div class="img-wrap">
 									<img src="{{ product.imgs.first.getUrl(transform) }}" class="img-fluid" />
 								</div>
@@ -92,17 +92,18 @@
 							{% endif %}
 
 							<figcaption class="info-wrap p-2">
-								<h4 class="font-weight-bold text-black">{{ product.title}}</h4>
-								<p class="desc">{{ product.body | slice(3, 100) | raw}}
+								<h4 class="font-weight-bold text-black productText">{{ product.title}}
+								</h4>
+								<p class="desc text-black productText">{{ product.body | slice(3, 100) | raw}}
 									{% if product.body | length > 100 %}
 										...
 									{% endif %}
 								</p>
 							</figcaption>
 							<div class="bottom-wrap p-2">
-								<a href="{{ product.url }}" class="btn btn-sm btn-primary float-right">Details</a>	
+								<a href="{{ product.url }}" class="btn btn-sm btnSec float-right text-white">Details</a>	
 								<div class="price-wrap h5">
-									<span class="price-new text-success">{{ product.defaultPrice | currency('EUR') }}</span><del class="price-old"></del>
+									<span class="price-new text-white">{{ product.defaultPrice | currency('EUR') }}</span><del class="price-old"></del>
 								</div>
 							</div>
 						</div>
@@ -122,7 +123,7 @@
 				{% endfor %}
 			</div>
 			<div class="mt-5 text-center">
-				<a href="" class="btn btn-primary">Alles bekijken</a>
+				<a href="{{ siteUrl }}category" class="btn btnColor text-white">Alles bekijken</a>
 			</div>
 		</div>
 	</div>
