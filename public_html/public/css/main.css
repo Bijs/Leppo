@@ -9365,7 +9365,12 @@ main {
   border: none; }
 
 .vraag {
-  color: #4F5D75 !important; }
+  color: #ffffff !important;
+  height: 10px;
+  font-size: 18px; }
+
+.cardColor {
+  background-color: #73937E; }
 
 .privacy-body {
   font-size: 18px; }
