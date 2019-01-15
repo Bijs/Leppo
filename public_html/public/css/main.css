@@ -9350,7 +9350,10 @@ main {
   color: #929292; }
 
 .title {
-  color: #4F5D75; }
+  color: #819e8b; }
+
+.btnColor {
+  background-color: #73937E; }
 
 .vraag {
   color: #4F5D75 !important; }

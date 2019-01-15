@@ -9,8 +9,8 @@
 					<h1 class="text title text-uppercase"><b>{{ entry.heroTitle}}</b></h1>
 					<h2 class="text-white h3 font-weight-light">{{ entry.heroSubtitle }}</h2>
 					<div class="mt-5">
-						<a href="#" class="btn btn-primary pl-3 pr-3 pt-2 pb-2 mr-3 lees-link text-white">Bekijk producten</a>
-						<a href="#" class="btn btn-secondary pl-3 pr-3 pt-2 pb-2 lees-link text-white">Bekijk hoe het werkt</a>
+						<a href="{{ siteUrl }}producten-overzicht" class="btn btnColor pl-3 pr-3 pt-2 pb-2 mr-3 lees-link text-white">Producten</a>
+						<a href="{{ siteUrl }}hoe-werkt-het" class="btn btn-light pl-3 pr-3 pt-2 pb-2 lees-link text-black">Hoe werkt het</a>
 					</div>
 				</div>
 			</div>
@@ -80,7 +80,7 @@
 
 				{% for product in craft.commerce.products({hasVariant: {hasStock: true }}).find() %}
 					<div class="col-md-4 text-white">
-						<div class="border">
+						<div class="card card-product">
 							{% if product.imgs|length %}
 								<div class="img-wrap">
 									<img src="{{ product.imgs.first.getUrl(transform) }}" class="img-fluid" />
@@ -92,7 +92,7 @@
 							{% endif %}
 
 							<figcaption class="info-wrap p-2">
-								<h4 class="font-weight-bold">{{ product.title}}</h4>
+								<h4 class="font-weight-bold text-black">{{ product.title}}</h4>
 								<p class="desc">{{ product.body | slice(3, 100) | raw}}
 									{% if product.body | length > 100 %}
 										...
@@ -113,7 +113,7 @@
 						</div>
 
 						<div class="text-center">
-							<p class="h4 text-primary font-weight-bold mt-3">
+							<p class="h4 text-black font-weight-bold mt-3">
 								<a href="{{ product.url }}">{{ product.title }}</a>
 							</p>
 							<p class="text-white">{{ product.defaultPrice|currency('EUR') }}</p>
